@@ -1,22 +1,29 @@
 name: Hello World Workflow
 
-on: [push]
+on: [push]  # This triggers the action every time you push something to your branch
 
 jobs:
   hello_1:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout code 🔍
         uses: actions/checkout@v3
-        
+
       - name: Display Hello World 1
-        run: echo "✅ Hello World 1"
-        
+        run: echo "Hello World 1 ✅"
+
   hello_2:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout code 🔍
         uses: actions/checkout@v3
         
       - name: Display Hello World 2
-        run: echo "✅ Hello World 2"
+        run: echo "Hello World 2 ✅"
+
+  finished:
+    runs-on: ubuntu-latest
+    needs: [hello_1, hello_2]
+    steps:
+      - name: Final Confirmation
+        run: echo "Lenna to Hogwarts... Green Check Achieved! 🎯✅"
